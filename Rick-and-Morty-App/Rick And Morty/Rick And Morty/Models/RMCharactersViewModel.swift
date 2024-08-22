@@ -99,15 +99,3 @@ public final class RMCharactersViewModel {
     }
 }
 
-struct CharacterResponse: Codable {
-    let results: [RMCharacter]
-}
-
-struct RMCharacter: Codable {
-    let id: Int
-    let name: String
-    let species: String
-    let image: String
-    let status: String
-    let gender: String
-}

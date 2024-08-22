@@ -25,6 +25,7 @@
 		4EDE4FBC2C7756E4009C017C /* RMCharacterViewControllerTestst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDE4FBB2C7756E4009C017C /* RMCharacterViewControllerTestst.swift */; };
 		4EDE4FC42C775AF5009C017C /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4EDE4FC32C775AF5009C017C /* SDWebImage */; };
 		4EDE4FC82C775AFD009C017C /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4EDE4FC72C775AFD009C017C /* SDWebImage */; };
+		4EDE4FCC2C775CA6009C017C /* CharacterResponseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDE4FCB2C775CA6009C017C /* CharacterResponseModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		4EB41A362C772F3700D0E233 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		4EDE4FB92C773704009C017C /* RMCharacterDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterDetailsView.swift; sourceTree = "<group>"; };
 		4EDE4FBB2C7756E4009C017C /* RMCharacterViewControllerTestst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterViewControllerTestst.swift; sourceTree = "<group>"; };
+		4EDE4FCB2C775CA6009C017C /* CharacterResponseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterResponseModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				4E83A5AC2C76526400923901 /* RMCharactersViewModel.swift */,
+				4EDE4FCB2C775CA6009C017C /* CharacterResponseModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				4E83A57D2C7650D300923901 /* ViewController.swift in Sources */,
 				4EB41A372C772F3700D0E233 /* UIImage+.swift in Sources */,
 				4E49E3C12C771DBF00ABB596 /* RMCharacterViewCell.swift in Sources */,
+				4EDE4FCC2C775CA6009C017C /* CharacterResponseModels.swift in Sources */,
 				4E83A5792C7650D300923901 /* AppDelegate.swift in Sources */,
 				4EDE4FBA2C773704009C017C /* RMCharacterDetailsView.swift in Sources */,
 				4E83A5AA2C76522800923901 /* RMCharactersViewController.swift in Sources */,

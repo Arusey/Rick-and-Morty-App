@@ -42,35 +42,30 @@ class RMCharactersViewController: UIViewController, UITableViewDelegate, UITable
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.addTarget(self, action: #selector(filterChanged(_:)), for: .valueChanged)
         
-        let selectedColor = UIColor(red: 0.678, green: 0.847, blue: 0.902, alpha: 1.0) // Baby blue color (adjust as needed)
+        let selectedColor = UIColor(red: 0.678, green: 0.847, blue: 0.902, alpha: 1.0)
         let unselectedColor = UIColor.white
-        let borderColor = UIColor.lightGray // Light gray border when unselected
-        let textColor = UIColor.black // Dark text color when selected
-        let unselectedTextColor = UIColor.black // Dark text color when unselected
+        let borderColor = UIColor.lightGray
+        let textColor = UIColor.black
+        let unselectedTextColor = UIColor.black
         
-        // Set text color for selected state
         let selectedAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: textColor
         ]
         segmentedControl.setTitleTextAttributes(selectedAttributes, for: .selected)
         
-        // Set text color for unselected state
         let unselectedAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: unselectedTextColor
         ]
         segmentedControl.setTitleTextAttributes(unselectedAttributes, for: .normal)
         
-        // Set background colors
         segmentedControl.setBackgroundImage(UIImage(color: selectedColor), for: .selected, barMetrics: .default)
         segmentedControl.setBackgroundImage(UIImage(color: unselectedColor), for: .normal, barMetrics: .default)
         
-        // Set border
         segmentedControl.layer.borderWidth = 1
         segmentedControl.layer.borderColor = borderColor.cgColor
         segmentedControl.layer.cornerRadius = 25 // Make it oval, half of the height
         segmentedControl.clipsToBounds = true
         
-        // Add the segmented control to the view
         view.addSubview(segmentedControl)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
