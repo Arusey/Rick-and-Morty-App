@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class RMCharactersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -15,6 +16,7 @@ class RMCharactersViewController: UIViewController, UITableViewDelegate, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Rick and Morty Characters"
         setupSegmentedControl()
         setupTableView()
         setupViewModel()
@@ -40,23 +42,35 @@ class RMCharactersViewController: UIViewController, UITableViewDelegate, UITable
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.addTarget(self, action: #selector(filterChanged(_:)), for: .valueChanged)
         
-        let selectedColor = UIColor.systemBlue
+        let selectedColor = UIColor(red: 0.678, green: 0.847, blue: 0.902, alpha: 1.0) // Baby blue color (adjust as needed)
         let unselectedColor = UIColor.white
-        let textColor = UIColor.white
-        let unselectedTextColor = UIColor.systemBlue
+        let borderColor = UIColor.lightGray // Light gray border when unselected
+        let textColor = UIColor.black // Dark text color when selected
+        let unselectedTextColor = UIColor.black // Dark text color when unselected
         
+        // Set text color for selected state
         let selectedAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: textColor
         ]
         segmentedControl.setTitleTextAttributes(selectedAttributes, for: .selected)
+        
+        // Set text color for unselected state
         let unselectedAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: unselectedTextColor
         ]
         segmentedControl.setTitleTextAttributes(unselectedAttributes, for: .normal)
+        
+        // Set background colors
         segmentedControl.setBackgroundImage(UIImage(color: selectedColor), for: .selected, barMetrics: .default)
         segmentedControl.setBackgroundImage(UIImage(color: unselectedColor), for: .normal, barMetrics: .default)
+        
+        // Set border
         segmentedControl.layer.borderWidth = 1
-        segmentedControl.layer.borderColor = selectedColor.cgColor
+        segmentedControl.layer.borderColor = borderColor.cgColor
+        segmentedControl.layer.cornerRadius = 25 // Make it oval, half of the height
+        segmentedControl.clipsToBounds = true
+        
+        // Add the segmented control to the view
         view.addSubview(segmentedControl)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -66,7 +80,6 @@ class RMCharactersViewController: UIViewController, UITableViewDelegate, UITable
             segmentedControl.heightAnchor.constraint(equalToConstant: 50) // Set height to 50 points
         ])
     }
-
     
     @objc private func filterChanged(_ sender: UISegmentedControl) {
         viewModel.filterCharacters(by: sender.selectedSegmentIndex)
@@ -101,8 +114,14 @@ class RMCharactersViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == viewModel.numberOfCharacters {
+        if indexPath.row < viewModel.numberOfCharacters {
+            let character = viewModel.getCharacter(at: indexPath.row)
+            let characterDetailView = RMCharacterDetailsView(character: character)
+            let hostingController = UIHostingController(rootView: characterDetailView)
+            navigationController?.pushViewController(hostingController, animated: true)
+        } else {
             viewModel.fetchCharacters()
         }
     }
+
 }

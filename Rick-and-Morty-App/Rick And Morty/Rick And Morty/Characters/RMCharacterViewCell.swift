@@ -91,7 +91,7 @@ class RMCharacterViewCell: UITableViewCell {
         ])
     }
     
-    func configure(with character: Character) {
+    func configure(with character: RMCharacter) {
         nameLabel.text = character.name
         speciesLabel.text = character.species
         if let imageURL = URL(string: character.image) {

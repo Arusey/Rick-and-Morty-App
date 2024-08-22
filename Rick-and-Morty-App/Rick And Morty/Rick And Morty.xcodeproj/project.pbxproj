@@ -21,6 +21,10 @@
 		4EB41A322C7721ED00D0E233 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB41A312C7721ED00D0E233 /* SDWebImage */; };
 		4EB41A342C7721ED00D0E233 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB41A332C7721ED00D0E233 /* SDWebImageMapKit */; };
 		4EB41A372C772F3700D0E233 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB41A362C772F3700D0E233 /* UIImage+.swift */; };
+		4EDE4FBA2C773704009C017C /* RMCharacterDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDE4FB92C773704009C017C /* RMCharacterDetailsView.swift */; };
+		4EDE4FBC2C7756E4009C017C /* RMCharacterViewControllerTestst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDE4FBB2C7756E4009C017C /* RMCharacterViewControllerTestst.swift */; };
+		4EDE4FC42C775AF5009C017C /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4EDE4FC32C775AF5009C017C /* SDWebImage */; };
+		4EDE4FC82C775AFD009C017C /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4EDE4FC72C775AFD009C017C /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +61,8 @@
 		4E83A5A92C76522800923901 /* RMCharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharactersViewController.swift; sourceTree = "<group>"; };
 		4E83A5AC2C76526400923901 /* RMCharactersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharactersViewModel.swift; sourceTree = "<group>"; };
 		4EB41A362C772F3700D0E233 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		4EDE4FB92C773704009C017C /* RMCharacterDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterDetailsView.swift; sourceTree = "<group>"; };
+		4EDE4FBB2C7756E4009C017C /* RMCharacterViewControllerTestst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterViewControllerTestst.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EDE4FC82C775AFD009C017C /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EDE4FC42C775AF5009C017C /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +101,7 @@
 				4E83A58E2C7650D600923901 /* Rick And MortyTests */,
 				4E83A5982C7650D600923901 /* Rick And MortyUITests */,
 				4E83A5762C7650D300923901 /* Products */,
+				4EDE4FC22C775AF5009C017C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,6 +144,7 @@
 			children = (
 				4E83A5992C7650D600923901 /* Rick_And_MortyUITests.swift */,
 				4E83A59B2C7650D600923901 /* Rick_And_MortyUITestsLaunchTests.swift */,
+				4EDE4FBB2C7756E4009C017C /* RMCharacterViewControllerTestst.swift */,
 			);
 			path = "Rick And MortyUITests";
 			sourceTree = "<group>";
@@ -144,6 +154,7 @@
 			children = (
 				4E83A5A92C76522800923901 /* RMCharactersViewController.swift */,
 				4E49E3C02C771DBF00ABB596 /* RMCharacterViewCell.swift */,
+				4EDE4FB92C773704009C017C /* RMCharacterDetailsView.swift */,
 			);
 			path = Characters;
 			sourceTree = "<group>";
@@ -162,6 +173,13 @@
 				4EB41A362C772F3700D0E233 /* UIImage+.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		4EDE4FC22C775AF5009C017C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +220,9 @@
 				4E83A58D2C7650D600923901 /* PBXTargetDependency */,
 			);
 			name = "Rick And MortyTests";
+			packageProductDependencies = (
+				4EDE4FC72C775AFD009C017C /* SDWebImage */,
+			);
 			productName = "Rick And MortyTests";
 			productReference = 4E83A58B2C7650D600923901 /* Rick And MortyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -220,6 +241,9 @@
 				4E83A5972C7650D600923901 /* PBXTargetDependency */,
 			);
 			name = "Rick And MortyUITests";
+			packageProductDependencies = (
+				4EDE4FC32C775AF5009C017C /* SDWebImage */,
+			);
 			productName = "Rick And MortyUITests";
 			productReference = 4E83A5952C7650D600923901 /* Rick And MortyUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -305,6 +329,7 @@
 				4EB41A372C772F3700D0E233 /* UIImage+.swift in Sources */,
 				4E49E3C12C771DBF00ABB596 /* RMCharacterViewCell.swift in Sources */,
 				4E83A5792C7650D300923901 /* AppDelegate.swift in Sources */,
+				4EDE4FBA2C773704009C017C /* RMCharacterDetailsView.swift in Sources */,
 				4E83A5AA2C76522800923901 /* RMCharactersViewController.swift in Sources */,
 				4E83A57B2C7650D300923901 /* SceneDelegate.swift in Sources */,
 				4E83A5AD2C76526400923901 /* RMCharactersViewModel.swift in Sources */,
@@ -323,6 +348,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EDE4FBC2C7756E4009C017C /* RMCharacterViewControllerTestst.swift in Sources */,
 				4E83A59A2C7650D600923901 /* Rick_And_MortyUITests.swift in Sources */,
 				4E83A59C2C7650D600923901 /* Rick_And_MortyUITestsLaunchTests.swift in Sources */,
 			);
@@ -486,7 +512,7 @@
 				INFOPLIST_FILE = "Rick And Morty/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -514,7 +540,7 @@
 				INFOPLIST_FILE = "Rick And Morty/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -668,6 +694,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4EB41A302C7721ED00D0E233 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImageMapKit;
+		};
+		4EDE4FC32C775AF5009C017C /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4EB41A302C7721ED00D0E233 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		4EDE4FC72C775AFD009C017C /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4EB41A302C7721ED00D0E233 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

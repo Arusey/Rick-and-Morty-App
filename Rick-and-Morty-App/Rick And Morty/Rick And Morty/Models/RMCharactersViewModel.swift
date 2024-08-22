@@ -6,13 +6,13 @@
 //
 
 import Foundation
-class RMCharactersViewModel {
+public final class RMCharactersViewModel {
     
-    private var characters: [Character] = []
+    var characters: [RMCharacter] = []
     private var page = 1
     private let pageSize = 20
     var isLoading = false
-    private var filteredCharacters: [Character] = []
+    private var filteredCharacters: [RMCharacter] = []
     private var currentFilter: Status?
     
     
@@ -59,7 +59,7 @@ class RMCharactersViewModel {
         return filteredCharacters.isEmpty && currentFilter == nil ? characters.count : filteredCharacters.count
     }
     
-    func getCharacter(at index: Int) -> Character {
+    func getCharacter(at index: Int) -> RMCharacter {
         return filteredCharacters.isEmpty && currentFilter == nil ? characters[index] : filteredCharacters[index]
     }
     
@@ -94,19 +94,20 @@ class RMCharactersViewModel {
         }
     }
     
-    func getFilteredCharacter(at index: Int) -> Character {
+    func getFilteredCharacter(at index: Int) -> RMCharacter {
         return filteredCharacters[index]
     }
 }
 
 struct CharacterResponse: Codable {
-    let results: [Character]
+    let results: [RMCharacter]
 }
 
-struct Character: Codable {
+struct RMCharacter: Codable {
     let id: Int
     let name: String
     let species: String
     let image: String
     let status: String
+    let gender: String
 }
