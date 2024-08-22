@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E49E3C12C771DBF00ABB596 /* RMCharacterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E49E3C02C771DBF00ABB596 /* RMCharacterViewCell.swift */; };
 		4E83A5792C7650D300923901 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E83A5782C7650D300923901 /* AppDelegate.swift */; };
 		4E83A57B2C7650D300923901 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E83A57A2C7650D300923901 /* SceneDelegate.swift */; };
 		4E83A57D2C7650D300923901 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E83A57C2C7650D300923901 /* ViewController.swift */; };
@@ -17,6 +18,9 @@
 		4E83A59C2C7650D600923901 /* Rick_And_MortyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E83A59B2C7650D600923901 /* Rick_And_MortyUITestsLaunchTests.swift */; };
 		4E83A5AA2C76522800923901 /* RMCharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E83A5A92C76522800923901 /* RMCharactersViewController.swift */; };
 		4E83A5AD2C76526400923901 /* RMCharactersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E83A5AC2C76526400923901 /* RMCharactersViewModel.swift */; };
+		4EB41A322C7721ED00D0E233 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB41A312C7721ED00D0E233 /* SDWebImage */; };
+		4EB41A342C7721ED00D0E233 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB41A332C7721ED00D0E233 /* SDWebImageMapKit */; };
+		4EB41A372C772F3700D0E233 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB41A362C772F3700D0E233 /* UIImage+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E49E3C02C771DBF00ABB596 /* RMCharacterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterViewCell.swift; sourceTree = "<group>"; };
 		4E83A5752C7650D300923901 /* Rick And Morty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rick And Morty.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E83A5782C7650D300923901 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E83A57A2C7650D300923901 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +56,7 @@
 		4E83A59B2C7650D600923901 /* Rick_And_MortyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rick_And_MortyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4E83A5A92C76522800923901 /* RMCharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharactersViewController.swift; sourceTree = "<group>"; };
 		4E83A5AC2C76526400923901 /* RMCharactersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharactersViewModel.swift; sourceTree = "<group>"; };
+		4EB41A362C772F3700D0E233 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EB41A342C7721ED00D0E233 /* SDWebImageMapKit in Frameworks */,
+				4EB41A322C7721ED00D0E233 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +109,7 @@
 		4E83A5772C7650D300923901 /* Rick And Morty */ = {
 			isa = PBXGroup;
 			children = (
+				4EB41A352C772F2400D0E233 /* Utilities */,
 				4E83A5AB2C76524E00923901 /* Models */,
 				4E83A5A82C76520200923901 /* Characters */,
 				4E83A5782C7650D300923901 /* AppDelegate.swift */,
@@ -134,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				4E83A5A92C76522800923901 /* RMCharactersViewController.swift */,
+				4E49E3C02C771DBF00ABB596 /* RMCharacterViewCell.swift */,
 			);
 			path = Characters;
 			sourceTree = "<group>";
@@ -144,6 +154,14 @@
 				4E83A5AC2C76526400923901 /* RMCharactersViewModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		4EB41A352C772F2400D0E233 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4EB41A362C772F3700D0E233 /* UIImage+.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +180,10 @@
 			dependencies = (
 			);
 			name = "Rick And Morty";
+			packageProductDependencies = (
+				4EB41A312C7721ED00D0E233 /* SDWebImage */,
+				4EB41A332C7721ED00D0E233 /* SDWebImageMapKit */,
+			);
 			productName = "Rick And Morty";
 			productReference = 4E83A5752C7650D300923901 /* Rick And Morty.app */;
 			productType = "com.apple.product-type.application";
@@ -234,6 +256,9 @@
 				Base,
 			);
 			mainGroup = 4E83A56C2C7650D300923901;
+			packageReferences = (
+				4EB41A302C7721ED00D0E233 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 4E83A5762C7650D300923901 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -277,6 +302,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E83A57D2C7650D300923901 /* ViewController.swift in Sources */,
+				4EB41A372C772F3700D0E233 /* UIImage+.swift in Sources */,
+				4E49E3C12C771DBF00ABB596 /* RMCharacterViewCell.swift in Sources */,
 				4E83A5792C7650D300923901 /* AppDelegate.swift in Sources */,
 				4E83A5AA2C76522800923901 /* RMCharactersViewController.swift in Sources */,
 				4E83A57B2C7650D300923901 /* SceneDelegate.swift in Sources */,
@@ -619,6 +646,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4EB41A302C7721ED00D0E233 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.19.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4EB41A312C7721ED00D0E233 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4EB41A302C7721ED00D0E233 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		4EB41A332C7721ED00D0E233 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4EB41A302C7721ED00D0E233 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4E83A56D2C7650D300923901 /* Project object */;
 }

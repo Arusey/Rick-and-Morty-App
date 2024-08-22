@@ -8,47 +8,101 @@
 import UIKit
 
 class RMCharactersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-    private let tableView = UITableView()
-    private let viewModel = CharactersViewModel()
     
+    private let tableView = UITableView()
+    private let viewModel = RMCharactersViewModel()
+    let segmentedControl = UISegmentedControl(items: ["Alive", "Dead", "Unknown"])
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupSegmentedControl()
         setupTableView()
-        bindViewModel()
+        setupViewModel()
         viewModel.fetchCharacters()
     }
-
+    
     private func setupTableView() {
-        tableView.frame = view.bounds
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(RMCharacterViewCell.self, forCellReuseIdentifier: "RMCharacterViewCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "LoadMoreCell")
         view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 16),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+
+    private func setupSegmentedControl() {
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.addTarget(self, action: #selector(filterChanged(_:)), for: .valueChanged)
+        
+        let selectedColor = UIColor.systemBlue
+        let unselectedColor = UIColor.white
+        let textColor = UIColor.white
+        let unselectedTextColor = UIColor.systemBlue
+        
+        let selectedAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: textColor
+        ]
+        segmentedControl.setTitleTextAttributes(selectedAttributes, for: .selected)
+        let unselectedAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: unselectedTextColor
+        ]
+        segmentedControl.setTitleTextAttributes(unselectedAttributes, for: .normal)
+        segmentedControl.setBackgroundImage(UIImage(color: selectedColor), for: .selected, barMetrics: .default)
+        segmentedControl.setBackgroundImage(UIImage(color: unselectedColor), for: .normal, barMetrics: .default)
+        segmentedControl.layer.borderWidth = 1
+        segmentedControl.layer.borderColor = selectedColor.cgColor
+        view.addSubview(segmentedControl)
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            segmentedControl.heightAnchor.constraint(equalToConstant: 50) // Set height to 50 points
+        ])
+    }
+
+    
+    @objc private func filterChanged(_ sender: UISegmentedControl) {
+        viewModel.filterCharacters(by: sender.selectedSegmentIndex)
     }
     
-    private func bindViewModel() {
-        viewModel.charactersUpdated = { [weak self] in
+    private func setupViewModel() {
+        viewModel.onCharactersUpdated = { [weak self] in
             self?.tableView.reloadData()
         }
     }
-
-    // MARK: - UITableViewDataSource
-
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfCharacters()
+        return viewModel.numberOfCharacters + (viewModel.shouldShowLoadMoreButton() ? 1 : 0)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let character = viewModel.character(at: indexPath.row)
-        cell.textLabel?.text = character.name
-        return cell
+        if indexPath.row < viewModel.numberOfCharacters {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RMCharacterViewCell", for: indexPath) as! RMCharacterViewCell
+            let character = viewModel.getCharacter(at: indexPath.row)
+            cell.configure(with: character)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LoadMoreCell", for: indexPath)
+            cell.textLabel?.text = "Load More"
+            cell.textLabel?.textAlignment = .center
+            return cell
+        }
     }
-
-    // MARK: - UITableViewDelegate
-
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        viewModel.shouldFetchNextPage(for: indexPath.row)
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == viewModel.numberOfCharacters {
+            viewModel.fetchCharacters()
+        }
     }
 }

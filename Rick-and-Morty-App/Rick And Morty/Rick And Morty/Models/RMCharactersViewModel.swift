@@ -6,53 +6,96 @@
 //
 
 import Foundation
-class CharactersViewModel {
+class RMCharactersViewModel {
+    
     private var characters: [Character] = []
-    private var currentPage = 1
-    private var isLoading = false
-    private let apiURL = "https://rickandmortyapi.com/api/character?page="
-
-    var charactersUpdated: (() -> Void)?
+    private var page = 1
+    private let pageSize = 20
+    var isLoading = false
+    private var filteredCharacters: [Character] = []
+    private var currentFilter: Status?
+    
+    
+    enum Status {
+        case alive
+        case dead
+        case unknown
+    }
+    
+    var onCharactersUpdated: (() -> Void)?
     
     func fetchCharacters() {
         guard !isLoading else { return }
         isLoading = true
-
-        let urlString = "\(apiURL)\(currentPage)"
+        
+        let urlString = "https://rickandmortyapi.com/api/character/?page=\(page)"
         guard let url = URL(string: urlString) else { return }
-
+        
         URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             guard let self = self else { return }
+            self.isLoading = false
+            
             if let data = data {
                 do {
-                    let decoder = JSONDecoder()
-                    let result = try decoder.decode(CharacterResponse.self, from: data)
+                    let result = try JSONDecoder().decode(CharacterResponse.self, from: data)
                     self.characters.append(contentsOf: result.results)
-                    self.currentPage += 1
-                    self.isLoading = false
-                    DispatchQueue.main.async {
-                        self.charactersUpdated?()
+                    self.page += 1
+                    
+                    if self.currentFilter == nil {
+                        DispatchQueue.main.async {
+                            self.onCharactersUpdated?()
+                        }
+                    } else {
+                        self.applyFilter()
                     }
                 } catch {
                     print(error)
-                    self.isLoading = false
                 }
             }
         }.resume()
     }
-
-    func numberOfCharacters() -> Int {
-        return characters.count
+    
+    var numberOfCharacters: Int {
+        return filteredCharacters.isEmpty && currentFilter == nil ? characters.count : filteredCharacters.count
     }
-
-    func character(at index: Int) -> Character {
-        return characters[index]
+    
+    func getCharacter(at index: Int) -> Character {
+        return filteredCharacters.isEmpty && currentFilter == nil ? characters[index] : filteredCharacters[index]
     }
-
-    func shouldFetchNextPage(for index: Int) {
-        if index == characters.count - 1 {
-            fetchCharacters()
+    
+    func shouldShowLoadMoreButton() -> Bool {
+        return characters.count % pageSize == 0
+    }
+    
+    func filterCharacters(by index: Int) {
+        switch index {
+        case 0: currentFilter = .alive
+        case 1: currentFilter = .dead
+        case 2: currentFilter = .unknown
+        default: currentFilter = nil
         }
+        applyFilter()
+    }
+    
+    private func applyFilter() {
+        guard let currentFilter = currentFilter else { return }
+        
+        switch currentFilter {
+        case .alive:
+            filteredCharacters = characters.filter { $0.status == "Alive" }
+        case .dead:
+            filteredCharacters = characters.filter { $0.status == "Dead" }
+        case .unknown:
+            filteredCharacters = characters.filter { $0.status == "unknown" }
+        }
+        
+        DispatchQueue.main.async {
+            self.onCharactersUpdated?()
+        }
+    }
+    
+    func getFilteredCharacter(at index: Int) -> Character {
+        return filteredCharacters[index]
     }
 }
 
@@ -63,5 +106,7 @@ struct CharacterResponse: Codable {
 struct Character: Codable {
     let id: Int
     let name: String
+    let species: String
     let image: String
+    let status: String
 }
