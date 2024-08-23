@@ -45,6 +45,7 @@ struct RMCharacterDetailsView: View {
             Spacer()
         }
         .padding()
+        .navigationTitle("Character Details")
     }
 }
 

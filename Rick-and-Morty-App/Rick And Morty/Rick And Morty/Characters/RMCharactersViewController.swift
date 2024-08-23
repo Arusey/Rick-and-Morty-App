@@ -102,7 +102,9 @@ class RMCharactersViewController: UIViewController, UITableViewDelegate, UITable
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "LoadMoreCell", for: indexPath)
-            cell.textLabel?.text = "Load More"
+            cell.textLabel?.text = "Load More ..."
+            cell.textLabel?.textColor = .systemBlue
+            cell.textLabel?.font = .boldSystemFont(ofSize: 16)
             cell.textLabel?.textAlignment = .center
             return cell
         }
