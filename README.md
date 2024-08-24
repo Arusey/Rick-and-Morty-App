@@ -11,6 +11,8 @@ Name
 Image
 Species
 Users can filter the list by character status: Alive, Dead, or Unknown.
+
+
 **Screen 2: Character Details**
 
 
